@@ -42,7 +42,7 @@ def cipher_keypad(pad: KeyPad, phrase: str) -> str:
     :param phrase: a lowercase phrase with spaces. i.e. 'let me know if you need help'
     :return: space separated codes for the phrase i.e. 'uc3 dl2 sc2'
     """
-    fp = "".join([item for cell in pad for item in cell])
+    fp = "".join([item for cell in pad for item in cell]).replace("z", "zz")
     return " ".join(
         "usd"[j[0]] + "rcl"[j[1]] + str(j[2] + 1)
         for j in [(i // 9, (i % 9) // 3, i % 3) for i in [fp.index(l) for l in phrase.replace(" ", "")]]
