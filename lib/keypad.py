@@ -8,12 +8,13 @@ ColType = int
 def make_keypad(block: str, row: RowType, col: ColType) -> KeyPad:
     """
     Given coordinates of some block of letters in a keypad, create the keypad.
+
     :param block: a block of letters i.e. 'mno' or 'def'
     :param row: the block's 0-index row in the keypad
     :param col: the block's 0-indexed column in the keypad
-    :return: a 2d array
+    :return: a 2d array representing a keypad. the 'yz' block is 'yzz' instead
     """
-    abet = "abc def ghi jkl mno pqr stu vwx yz".split()
+    abet = "abc def ghi jkl mno pqr stu vwx yzz".split()
     rot = abet.index(block) - (row * 3 + col)
     new_abet = abet[rot:] + abet[:rot]
     return [new_abet[3 * i : 3 * i + 3] for i in range(3)]
@@ -42,7 +43,7 @@ def cipher_keypad(pad: KeyPad, phrase: str) -> str:
     :param phrase: a lowercase phrase with spaces. i.e. 'let me know if you need help'
     :return: space separated codes for the phrase i.e. 'uc3 dl2 sc2'
     """
-    fp = "".join([item for cell in pad for item in cell]).replace("z", "zz")
+    fp = "".join([item for cell in pad for item in cell])
     return " ".join(
         "usd"[j[0]] + "rcl"[j[1]] + str(j[2] + 1)
         for j in [(i // 9, (i % 9) // 3, i % 3) for i in [fp.index(l) for l in phrase.replace(" ", "")]]
@@ -59,9 +60,9 @@ def test_decipher_keypad():
 
 
 def test_make_keypad():
-    assert [["ghi", "jkl", "mno"], ["pqr", "stu", "vwx"], ["yz", "abc", "def"]] == make_keypad("mno", 0, 2)
-    assert [["ghi", "jkl", "mno"], ["pqr", "stu", "vwx"], ["yz", "abc", "def"]] == make_keypad("ghi", 0, 0)
-    assert [["pqr", "stu", "vwx"], ["yz", "abc", "def"], ["ghi", "jkl", "mno"]] == make_keypad("abc", 1, 1)
+    assert [["ghi", "jkl", "mno"], ["pqr", "stu", "vwx"], ["yzz", "abc", "def"]] == make_keypad("mno", 0, 2)
+    assert [["ghi", "jkl", "mno"], ["pqr", "stu", "vwx"], ["yzz", "abc", "def"]] == make_keypad("ghi", 0, 0)
+    assert [["pqr", "stu", "vwx"], ["yzz", "abc", "def"], ["ghi", "jkl", "mno"]] == make_keypad("abc", 1, 1)
 
 
 def test_cipher_keypad():
