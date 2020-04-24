@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "47c0ef102a1048a4f3cd85acfe38cd25d41deb9c819c940d2d06d5ed6d87b5bd"
+            "sha256": "325a1f100dd3b3cd5022e2b5c66b8b98f011a18f5dde027f65f9c6ecb50cc701"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -15,7 +15,18 @@
             }
         ]
     },
-    "default": {},
+    "default": {
+        "pyenchant": {
+            "hashes": [
+                "sha256:1bd26a644abf80196a9de3f2d820ebafb7e7f78385e392ce77cb1552f164d559",
+                "sha256:43032310df4a29f08a5ce5b65f2aeb0ec1bca5ef08bcf3156423d50e0e1d7d0c",
+                "sha256:8b4ef051ef75fa7695c5259c34fb51bc54aa76a39c04db4d4fda997a5e94792a",
+                "sha256:9fb8edbaa211e8594b4c3d26bbda8e78d6d5e260df50e6c9600be171aa83d575"
+            ],
+            "index": "pypi",
+            "version": "==3.0.1"
+        }
+    },
     "develop": {
         "appdirs": {
             "hashes": [

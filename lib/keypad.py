@@ -50,6 +50,17 @@ def cipher_keypad(pad: KeyPad, phrase: str) -> str:
     )
 
 
+def zip_ciphered(codes: str, phrase: str) -> str:
+    """
+    Given a code and the deciphered return them one above another
+
+    :param codes: space separated ciphertext
+    :param phrase: decoded plaintext
+    :return:
+    """
+    return f"{codes}\n" + " ".join(f" {c} " for c in phrase)
+
+
 def test_decipher_keypad():
     pad = make_keypad("mno", 0, 2)
     deciphered = decipher_keypad(
