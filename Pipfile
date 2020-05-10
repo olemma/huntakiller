@@ -6,7 +6,9 @@ verify_ssl = true
 [dev-packages]
 pytest = "*"
 mypy = "*"
-black = "==19.3b0"
+black = "==19.10b0"
+setuptools = "*"
+Pipenv-Setup = "*"
 
 [packages]
 pyenchant = "*"

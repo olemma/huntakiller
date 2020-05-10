@@ -1,7 +1,6 @@
 import logging
 import string
 from typing import Callable
-import enchant.tokenize
 
 import pytest
 
@@ -12,7 +11,7 @@ def decipher_mirror(word: str) -> str:
     """
     Decipher text in a mirrored alphabet
     :param word: mirrored lowercase word i.e. 'erloz'
-    :return: deciphred word 'viola'
+    :return: deciphered word 'viola'
     """
     res = []
     for c in word:
@@ -60,7 +59,8 @@ def decipher_text(decipherer: Callable[[str], str], text: str) -> str:
     :param text: a block of text
     :return: deciphered text.
     """
-
+    import enchant.tokenize
+    import enchant
     eng = enchant.Dict("en_US")
     tokenizer = enchant.tokenize.get_tokenizer("en_US")
     deciphered_text = text
